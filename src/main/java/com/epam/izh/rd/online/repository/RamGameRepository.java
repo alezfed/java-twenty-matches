@@ -6,17 +6,19 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.Arrays;
 
-public class RamGameRepository {
+public class RamGameRepository implements GameRepository {
     private GameState[] gameStates;
 
     public RamGameRepository() {
         gameStates = new GameState[0];
     }
 
+    @Override
     public int count() {
         return gameStates.length;
     }
 
+    @Override
     public int save(@NotNull GameState state) {
         int countStates = count();
         gameStates = Arrays.copyOf(gameStates, countStates + 1);
@@ -24,6 +26,7 @@ public class RamGameRepository {
         return ++countStates;
     }
 
+    @Override
     public GameState read(int id) {
         GameState gameState;
         try {

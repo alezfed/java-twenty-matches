@@ -6,17 +6,19 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.Arrays;
 
-public class RamUserRepository {
+public class RamUserRepository implements UserRepository {
     private User[] gameUsers;
 
     public RamUserRepository() {
         gameUsers = new User[0];
     }
 
+    @Override
     public int count() {
         return gameUsers.length;
     }
 
+    @Override
     public int save(@NotNull User user) {
         int countUsers = count();
         gameUsers = Arrays.copyOf(gameUsers, countUsers + 1);
@@ -24,6 +26,7 @@ public class RamUserRepository {
         return ++countUsers;
     }
 
+    @Override
     public User read(int id) {
         User user;
         try {
@@ -34,10 +37,12 @@ public class RamUserRepository {
         return user;
     }
 
+    @Override
     public String findNameById(int id) {
         return gameUsers[id].getName();
     }
 
+    @Override
     public int nextId(int id) {
         return (id + 1) % count();
     }

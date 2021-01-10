@@ -4,12 +4,14 @@ import com.epam.izh.rd.online.entity.GameProperties;
 import com.epam.izh.rd.online.entity.GameState;
 import com.epam.izh.rd.online.entity.PossibleGameStates;
 import com.epam.izh.rd.online.entity.User;
+import com.epam.izh.rd.online.repository.GameRepository;
 import com.epam.izh.rd.online.repository.RamGameRepository;
 import com.epam.izh.rd.online.repository.RamUserRepository;
+import com.epam.izh.rd.online.repository.UserRepository;
 
 public class ProcessGameService {
-    private RamGameRepository gameRepository;
-    private RamUserRepository userRepository;
+    private GameRepository gameRepository;
+    private UserRepository userRepository;
     private GameProperties gameProperties;
     private UserRequestService userRequestServicе;
     private ComputerLogicService computerLogicService;
